@@ -1,0 +1,10 @@
+div#one__view(data-bind='with: person')
+	h3 count
+		span(data-bind='text: firstRecord')
+	p First name: 
+		input(data-bind='value: firstName')
+	p Last name: 
+		input(data-bind='value: lastName') 
+
+script.
+	require('./app/one/view')

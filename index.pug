@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    meta(charset='utf8')
+  body
+    main
+      div#main
+      div#child
+
+    script.
+        window.$ = window.jQuery = require('jquery')
+    script(src="./app/lib/knockout-3.4.1.js")
+    script.
+        require('./index.js')
+    

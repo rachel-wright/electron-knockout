@@ -1,0 +1,24 @@
+{
+    "app": {
+        "mode": {
+            "development": false
+        }
+    },
+    "api": {
+        "endpoint": {
+            "uri": "https://mcrissdevecp.usgovcloudapp.net/rctapi/api/"
+        },
+        "pathnames": {
+            "operationalData": "McrissSyncData?recruitingPersonId=A6B37495-87FF-468F-8E42-43190841704C",
+            "referenceData": "refdata?recruitingOrganizationId=2427",
+            "locationData": "locationdata",
+            "schoolData": "schooldata",
+            "old_personData": "persondata?recruitingPersonId=A6B37495-87FF-468F-8E42-43190841704C",
+            "personData": "persondata?recruitingPersonId=C97C8257-B3F8-4D8D-9F77-FB911AC8C3F2"
+        },
+        "certificate": {
+            "filename": "development.pfx",
+            "password": "Mcr1$$Azur3!Mcr1$$Azur3!"
+        }
+    }
+}

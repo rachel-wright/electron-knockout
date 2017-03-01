@@ -1,0 +1,38 @@
+{
+  "name": "electron-knockout",
+  "version": "1.0.0",
+  "description": "A minimal Electron-Knockout application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "postinstall": "gulp install-patches"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@be/http-service": "^1.0.2",
+    "app-module-path": "^2.2.0",
+    "async": "^2.1.4",
+    "electron-pug": "^1.5.1",
+    "electron-reload": "^1.1.0",
+    "git-rev": "^0.2.1",
+    "jquery": "^3.1.0",
+    "mkdirs": "0.0.2",
+    "nedb": "^1.8.0",
+    "pkgconfig": "^3.1.0",
+    "pkglogger": "^2.2.4",
+    "pug": "^2.0.0-beta11",
+    "readline-sync": "^1.4.5",
+    "sqlite3": "^3.1.8"
+  },
+  "devDependencies": {
+    "devtron": "^1.4.0",
+    "electron": "^1.4.1",
+    "electron-builder": "^13.6.0",
+    "gulp": "^3.9.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/buchanan-edwards/mcriss.rct"
+  }
+}

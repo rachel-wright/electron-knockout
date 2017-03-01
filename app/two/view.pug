@@ -1,0 +1,28 @@
+div#two__view
+	h5
+		span(data-bind='text: firstRecord() + 1')
+		| - 
+		span(data-bind='text: lastRecord()')
+
+	div
+		table
+			thead
+				tr
+					th Name
+					th Status
+					th Disposition
+					th Gender
+			//- tbody(data-bind='foreach: peopleList()')
+			//- 	tr
+			//- 		td
+			//- 			a(data-bind='click: $parent.getPerson', href='#')
+			//- 				span(data-bind='text: fullName')
+			//- 		td(data-bind='text: status')
+			//- 		td(data-bind='text: disposition')
+			//- 		td(data-bind='text: gender')
+
+	button(data-bind='click: prevIndex') prev
+	button(data-bind='click: nextIndex') next
+
+script.
+	require('./app/two/view')
