@@ -6,29 +6,6 @@ const {
 function createMainMenu(app, win) {
     const menu = new Menu()
     menu.append(new MenuItem({
-        label: 'Modules',
-        submenu: [{
-            label: 'Applicant Board',
-            click() {
-                win.webContents.send('menu-pb')
-            }
-        }, {
-            label: 'S && R Book',
-            click() {
-                win.webContents.send('menu-sr')
-            }
-        }, {
-            type: 'separator'
-        }, {
-            label: 'Exit',
-            click() {
-                console.log('Exit App')
-                app.quit()
-            }
-        }]
-    }))
-
-    menu.append(new MenuItem({
         label: 'Network',
         submenu: [{
             label: 'Sync',

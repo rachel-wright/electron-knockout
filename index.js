@@ -3,13 +3,12 @@ const VM = require('./app/models/peopleModel');
 const db = require('./lib/old_database')
 const pkglogger = require('pkglogger')
 const appdir = require('./lib/appdir')
+const ko = require('knockout')
 
 pkglogger.dir(appdir.resolve('logs'))
 
-
 const views = {
     one: require('./app/one/view'),
-    two: require('./app/two/view')
 }
 
 const {
@@ -25,27 +24,14 @@ ipcRenderer.on('menu-sync', _ => {
             alert('Sync error: Looks like you are not connected to a network. Please check your network connection and try again. (' + err.message + ')')
         } else {
             alert('Sync success')
-            vm = new VM()
-            vm.init(_ => {
-                ko.applyBindings(VM)
-            })
+            vm.init()
         }
     })
 })
 
-// $().ready(function () {	
-//     async.waterfall(
-//         [(callback) => {
-//             vm = new VM()
-//             ko.applyBindings(vm)
-//             callback(null,vm)
-//         },
-//         (vm, callback) => {
-//             vm.init()            
-//             callback(null)
-//         }] 
-//     )  
-// })
+ko.onError = function(err) {
+    console.log('knockout error', err);
+};
 
 $().ready(_ => {
     // setTimeout(_ => {
@@ -58,6 +44,6 @@ $().ready(_ => {
 db.init()
 
 views.one.showMainContent()
-views.two.showMainContent()
+
 
 

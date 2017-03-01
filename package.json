@@ -17,6 +17,8 @@
     "electron-reload": "^1.1.0",
     "git-rev": "^0.2.1",
     "jquery": "^3.1.0",
+    "knockout": "^3.4.1",
+    "knockout-mapping": "^2.6.0",
     "mkdirs": "0.0.2",
     "nedb": "^1.8.0",
     "pkgconfig": "^3.1.0",

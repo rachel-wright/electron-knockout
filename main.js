@@ -61,6 +61,9 @@ function createWindow () {
     slashes: true
   }))
 
+  win.on('ready-to-show', _ => {
+    console.log('ready to show')
+  })
   // Emitted when the window is closed.
   win.on('closed', _ =>{
     // Dereference the window object, usually you would store windows

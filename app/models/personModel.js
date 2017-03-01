@@ -1,3 +1,4 @@
+const ko = require('knockout')
 const prospects = require('../../data/prospects')
 const AM = require('./addressModel')
 
