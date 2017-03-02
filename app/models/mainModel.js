@@ -1,13 +1,13 @@
 const ko = require('knockout')
 const async = require('async')
-const peopleModel = require('./peopleModel')
-const referenceModel = require('./referenceModel')
+const PeopleModel = require('./peopleModel')
+const ReferenceModel = require('./referenceModel')
 
 function MainModel(){
     var self = this
 
-    self.peopleModel = new peopleModel()
-    self.referenceModel = new referenceModel()
+    self.peopleModel = new PeopleModel()
+    self.referenceModel = new ReferenceModel()
 
     // Actions    
     self.init = function(){
