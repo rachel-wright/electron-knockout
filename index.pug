@@ -8,6 +8,9 @@ html
 
 script.
     window.$ = window.jQuery = require('jquery')
+     window.$.get('app/templates/templates.pug', function(templates) {
+        $('body').append( templates);
+    });
 script.
     require('./index.js')
     

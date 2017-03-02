@@ -29,19 +29,19 @@ ipcRenderer.on('menu-sync', _ => {
     })
 })
 
+db.init()
+
 ko.onError = function(err) {
     console.log('knockout error', err);
 };
 
 $().ready(_ => {
-    // setTimeout(_ => {
+    setTimeout(_ => {
         vm = new VM()
         ko.applyBindings(vm)
         vm.init()
-    // }, 1000)   
+    }, 300)   
 })
-
-db.init()
 
 views.one.showMainContent()
 

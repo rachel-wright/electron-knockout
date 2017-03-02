@@ -31,9 +31,25 @@ div#two
 	button(data-bind='click: prevIndex') prev
 	button(data-bind='click: nextIndex') next
 
-	//- div(data-bind='with: ethnicityList')
-	div(data-bind='foreach: ethnicityList()')
-		h5(data-bind='text: ethnicityAbbreviation')
+	div(data-bind='with: referenceModel')
+		div(data-bind="template: 'ethnicityList'")
+		div(data-bind="template: 'raceList'")
+		div(data-bind="template: 'recruitingSourceList'")
+		div(data-bind="template: 'religionList'")
+		div(data-bind="template: 'mepcomRaceList'")
+		div(data-bind="template: 'mepcomEthnicityList'")
+		div(data-bind="template: 'drugTypeList'")
+		div(data-bind="template: 'offenseTypeList'")
+		div(data-bind="template: 'recruitingActivityList'")
+		div(data-bind="template: 'citizenshipTypeList'")
+		div(data-bind="template: 'educationCredentialList'")
+		div(data-bind="template: 'educationCertificationList'")
+		div(data-bind="template: 'educationLevelList'")
+		div(data-bind="template: 'educationStatusList'")
+		div(data-bind="template: 'schoolList'")
+		div(data-bind="template: 'activityCommentList'")
+		div(data-bind="template: 'offenseList'")
+		div(data-bind="template: 'location'")
 
 script.
 	require('./app/one/view')

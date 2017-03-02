@@ -4,14 +4,14 @@ const async = require('async')
 const prospects = require('../../data/prospects')
 const dbaccess = require('../../lib/dbaccess')
 const personModel = require('./personModel')
+const referenceModel = require('./referenceModel')
 
 function PeopleModel() {
     var self = this
-    var unwrap = ko.utils.unwrapObservable
     
     self.people = ko.observableArray([])
-    // self.ethnicityList = ko.observableArray([])
     self.ethnicityList = ko.observableArray([])
+    self.referenceModel = new referenceModel()
 
     // paging data properties - starts with the first 10 records
     self.firstRecord = ko.observable(0)
@@ -46,7 +46,8 @@ function PeopleModel() {
              callback(null)
             },
             (callback) => {
-               getRefs()
+            //    getRefs()
+               self.referenceModel.init()
                callback(null)
             }
         ],
@@ -59,9 +60,13 @@ function PeopleModel() {
 
     getRefs = function(){
         dbaccess.getReferenceData((err, data) => {
-            if (data.ethnicityList instanceof Array){
-                // to just get a plain-old observables array, use ko mapping
-                self.ethnicityList(komapping.fromJS(data.ethnicityList))
+            if (err){
+                console.log('dbaccess error ', err)
+            } else {
+                if (data.ethnicityList instanceof Array){
+                    // to just get a plain-old observables array, use ko mapping
+                    self.ethnicityList(komapping.fromJS(data.ethnicityList))
+                }
             }
         })
     }
