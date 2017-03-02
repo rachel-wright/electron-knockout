@@ -1,21 +1,17 @@
 const ko = require('knockout')
 const komapping = require('knockout-mapping')
-const async = require('async')
 const prospects = require('../../data/prospects')
-const dbaccess = require('../../lib/dbaccess')
 const personModel = require('./personModel')
-const referenceModel = require('./referenceModel')
 
 function PeopleModel() {
     var self = this
     
     self.people = ko.observableArray([])
-    self.ethnicityList = ko.observableArray([])
-    self.referenceModel = new referenceModel()
 
     // paging data properties - starts with the first 10 records
     self.firstRecord = ko.observable(0)
     self.numberOfRecords = ko.observable(10)
+
 
     self.peoplePage = ko.observableArray([])
     ko.computed(_ => {
@@ -25,6 +21,9 @@ function PeopleModel() {
     self.lastRecord = ko.computed(_ =>{
         return self.firstRecord() + self.peoplePage().length
     }, self) 
+    self.pageRecords = ko.computed(_ => {
+        return ('Records ').concat((self.firstRecord() + 1)).concat(' of ').concat(self.lastRecord())
+    })
 
     // to select a record, set the index to something
     self.index = ko.observable()
@@ -35,28 +34,13 @@ function PeopleModel() {
         self.index(self.people.indexOf(person))        
     }
 
-    // Actions    
     self.init = function(){
-        async.parallel ([
-            (callback) => {
-                self.people(
+        self.people(
                     // use an explicitly declared model to get access to computed observables, functions, etc
                     prospects.data.map(row => {return new personModel(row)})
                 )
-             callback(null)
-            },
-            (callback) => {
-               self.referenceModel.init()
-               callback(null)
-            }
-        ],
-        (err) => {
-            if (err){
-                console.log('error: ', err)
-            }
-        })
     }
-
+    
     nextIndex = function(){
         i = self.firstRecord() + self.numberOfRecords() >  self.people().length ? self.firstRecord() : self.firstRecord() + self.numberOfRecords()
         self.firstRecord(i)

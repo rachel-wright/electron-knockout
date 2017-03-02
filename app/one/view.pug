@@ -1,35 +1,30 @@
-div#one
-	div(data-bind='if: index')
-		p First name: 
-			input(data-bind='value: person().firstName')
-		p Last name: 
-			input(data-bind='value: person().lastName') 
+div
+	div(data-bind='with: peopleModel')
+		div(data-bind='if: index')
+			p First name: 
+				input(data-bind='value: person().firstName')
+			p Last name: 
+				input(data-bind='value: person().lastName') 
 
-div#two
-	h5
-		span(data-bind='text: firstRecord() + 1')
-		| - 
-		span(data-bind='text: lastRecord()')
+		div
+			table
+				thead
+					tr
+						th Name
+						th Status
+						th Disposition
+						th Gender
+				tbody(data-bind='foreach: peoplePage()')
+					tr
+						td
+							a(data-bind='click: select', href='#')
+								span(data-bind='text: fullName')
+						td(data-bind='text: status')
+						td(data-bind='text: disposition')
+						td(data-bind='text: gender')
 
-	div
-		table
-			thead
-				tr
-					th Name
-					th Status
-					th Disposition
-					th Gender
-			tbody(data-bind='foreach: peoplePage()')
-				tr
-					td
-						a(data-bind='click: select', href='#')
-							span(data-bind='text: firstName')
-					td(data-bind='text: status')
-					td(data-bind='text: disposition')
-					td(data-bind='text: gender')
-
-	button(data-bind='click: prevIndex') prev
-	button(data-bind='click: nextIndex') next
+		button(data-bind='click: prevIndex') prev
+		button(data-bind='click: nextIndex') next
 
 	div(data-bind='with: referenceModel')
 		div(data-bind="template: 'ethnicityList'")

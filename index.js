@@ -1,5 +1,5 @@
 const async = require('async')
-const VM = require('./app/models/peopleModel');
+const VM = require('./app/models/mainModel');
 const db = require('./lib/old_database')
 const pkglogger = require('pkglogger')
 const appdir = require('./lib/appdir')
@@ -40,7 +40,7 @@ $().ready(_ => {
         vm = new VM()
         ko.applyBindings(vm)
         vm.init()
-    }, 300)   
+    }, 500)   
 })
 
 views.one.showMainContent()
