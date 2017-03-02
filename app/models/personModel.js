@@ -1,6 +1,5 @@
 const ko = require('knockout')
 const prospects = require('../../data/prospects')
-const AM = require('./addressModel')
 
 function PersonModel(person){
 	var self = this;

@@ -41,12 +41,11 @@ function PeopleModel() {
             (callback) => {
                 self.people(
                     // use an explicitly declared model to get access to computed observables, functions, etc
-                    prospects.data.slice(0,63).map(row => {return new personModel(row)})
+                    prospects.data.map(row => {return new personModel(row)})
                 )
              callback(null)
             },
             (callback) => {
-            //    getRefs()
                self.referenceModel.init()
                callback(null)
             }
@@ -54,19 +53,6 @@ function PeopleModel() {
         (err) => {
             if (err){
                 console.log('error: ', err)
-            }
-        })
-    }
-
-    getRefs = function(){
-        dbaccess.getReferenceData((err, data) => {
-            if (err){
-                console.log('dbaccess error ', err)
-            } else {
-                if (data.ethnicityList instanceof Array){
-                    // to just get a plain-old observables array, use ko mapping
-                    self.ethnicityList(komapping.fromJS(data.ethnicityList))
-                }
             }
         })
     }
